@@ -1,8 +1,10 @@
-compile: main.c 
-	 gcc  main.c -o ll
+DEPS = sort
 
-run: ll
-	 ./ll
+compile: main.cpp sorting.h
+	g++ main.cpp -o $(DEPS)
 
-clean: ll
-	 rm ll
+run: $(DEPS)
+	./$(DEPS) $(var)
+
+clean:
+	rm -f $(DEPS)
