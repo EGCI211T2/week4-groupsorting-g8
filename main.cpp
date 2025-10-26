@@ -1,7 +1,7 @@
 #include <iostream>
-#include <cstring>   // for strcmp
-#include <cstdlib>   // for atoi
-#include <chrono>    // for timing
+#include <cstring>   
+#include <cstdlib>   
+#include <chrono>    
 #include "sorting.h"
 using namespace std;
 using namespace std::chrono;
@@ -13,9 +13,9 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    string algo = argv[1];            // first argument = algorithm type
-    int n = argc - 2;                 // number of integers after algorithm name
-    int *a = new int[n];              // dynamically allocate array
+    string algo = argv[1];            
+    int n = argc - 2;                 
+    int *a = new int[n];              
 
     // convert input numbers from argv
     for (int i = 0; i < n; i++) {
