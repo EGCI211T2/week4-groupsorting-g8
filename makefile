@@ -1,8 +1,10 @@
-compile: main.c 
-	 gcc  main.c -o ll
+DEPS= sort
+compile: main.cpp
+	 clear
+	 g++  main.cpp -o $(DEPS)
 
-run: ll
-	 ./ll
+run: $(DEPS)
+	 ./$(DEPS)
 
-clean: ll
-	 rm ll
+clean: $(DEPS)
+	 rm $(DEPS)
