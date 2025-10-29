@@ -115,3 +115,42 @@ void insertionSort(int *a, int n) {
     auto duration = duration_cast<nanoseconds>(stop - start);
     cout << "Moves:" << moves << endl << "Execution time: " << duration.count() << " nanoseconds" << endl << "Using Insertion Sort:" << endl;
 }
+int movesQuick = 0;
+
+int partitionQuick(int a[], int low, int high) {
+    int pivot = a[high];
+    int i = low - 1;
+
+    for (int j = low; j < high; j++) {
+        if (a[j] < pivot) {
+            i++;
+            swap(a[i], a[j]);
+            movesQuick++; // swap move
+        }
+    }
+    swap(a[i + 1], a[high]);
+    movesQuick++; // final pivot swap
+    return (i + 1);
+}
+
+void quickSortAlgo(int a[], int low, int high) {
+    if (low < high) {
+        int pi = partitionQuick(a, low, high);
+        quickSortAlgo(a, low, pi - 1);
+        quickSortAlgo(a, pi + 1, high);
+    }
+}
+
+void quickSort(int a[], int n) {
+    movesQuick = 0;
+    auto start = high_resolution_clock::now();
+
+    quickSortAlgo(a, 0, n - 1);
+
+    auto stop = high_resolution_clock::now();
+    auto duration = duration_cast<microseconds>(stop - start).count();
+
+    cout << "Quick Sort Completed.\n";
+    cout << "Moves: " << movesQuick << endl;
+    cout << "Time: " << duration << " microseconds\n";
+}
